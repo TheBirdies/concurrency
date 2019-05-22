@@ -5,13 +5,14 @@
 package com.mmall.concurrency.example.singleton;
 
 import com.mmall.concurrency.annoations.NoThreadSafe;
+import com.mmall.concurrency.annoations.ThreadSafe;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 //单线程没问题，线程不安全
-//懒汉模式
-@NoThreadSafe
+//懒汉模式  volatile+双重检测机制 -禁止指令重排
+@ThreadSafe
 public class SingletonExample5 {
 
     //私有
@@ -28,11 +29,8 @@ public class SingletonExample5 {
     //3.instance=memory 设置instance指向刚分配的内存
     //2.ctorInstance() 初始化对象
 
-
-
-
-    //单利
-    private static SingletonExample5 instance=null;
+    //单利  volatile+双重检测机制 -禁止指令重排
+    private volatile static SingletonExample5 instance=null;
     //synchronized  双重检测机制
     public static SingletonExample5 getInstance(){
             if(instance==null){                     //B
