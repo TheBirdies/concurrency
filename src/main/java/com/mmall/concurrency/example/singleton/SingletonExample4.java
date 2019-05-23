@@ -51,8 +51,7 @@ public class SingletonExample4 {
 
         for (int i=0;i<100;i++){
             executorService.execute(() ->{
-                SingletonExample4 singletonExample4= SingletonExample4.getInstance();
-                System.out.println(singletonExample4);
+                System.out.println( SingletonExample4.getInstance().hashCode());
             });
         }
         executorService.shutdown();
