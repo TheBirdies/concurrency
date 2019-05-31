@@ -43,5 +43,6 @@ public class CountDownLatchExample {
     static  void test(int threadNum ) throws InterruptedException {
         Thread.sleep(100);
         log.info("{}",threadNum);
+        Thread.sleep(100);
     }
 }
